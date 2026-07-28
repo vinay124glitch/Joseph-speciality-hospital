@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-slate-700 antialiased bg-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+  .dark body {
+    @apply text-slate-300 bg-slate-950;
+  }
+
+  /* Tamil font override when lang="ta" */
+  [lang="ta"] body,
+  [lang="ta"] h1,
+  [lang="ta"] h2,
+  [lang="ta"] h3,
+  [lang="ta"] h4,
+  [lang="ta"] h5,
+  [lang="ta"] h6,
+  [lang="ta"] p,
+  [lang="ta"] span,
+  [lang="ta"] a,
+  [lang="ta"] button,
+  [lang="ta"] label,
+  [lang="ta"] input,
+  [lang="ta"] textarea,
+  [lang="ta"] select,
+  [lang="ta"] li,
+  [lang="ta"] td,
+  [lang="ta"] th,
+  [lang="ta"] div {
+    font-family: 'Noto Sans Tamil', 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .glass {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/40 dark:border-slate-700/40;
+  }
+  .card {
+    @apply bg-white dark:bg-slate-900 rounded-2xl shadow-card border border-slate-100 dark:border-slate-800 transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+  .section-pad {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* Language fade transition */
+  .lang-fade {
+    animation: langFade 300ms ease-in-out;
+  }
+  @keyframes langFade {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-600 to-teal-500 bg-clip-text text-transparent;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-200 dark:focus:ring-brand-900 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-brand-600 to-teal-500 text-white shadow-md hover:shadow-lg hover:scale-[1.02];
+  }
+  .btn-secondary {
+    @apply btn bg-white dark:bg-slate-800 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-slate-700 hover:bg-brand-50 dark:hover:bg-slate-700;
+  }
+  .btn-ghost {
+    @apply btn text-brand-700 dark:text-brand-300 hover:bg-brand-50 dark:hover:bg-slate-800;
+  }
+  .input-field {
+    @apply w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { @apply bg-slate-100 dark:bg-slate-900; }
+::-webkit-scrollbar-thumb { @apply bg-brand-300 dark:bg-slate-700 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-brand-500 dark:bg-slate-600; }
